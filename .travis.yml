@@ -1,0 +1,10 @@
+language: generic
+sudo: required
+services:
+  - docker #install copy of docker
+
+before_install: # series of setups before running the tests
+  - docker build -t ofekm/docker-react -f Dockerfile.dev . # the tag can be shorter - like myImage
+  - 
+script:
+  - docker run -e CI=true ofekm/docker-react npm run test
